@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { User } from '../../../models/User.model';
 import { environment } from '../../../../environments/environment';
 import { ModalComponent } from '../modal/modal.component';
-
 
 @Component({
   selector: 'app-table',
@@ -16,10 +16,10 @@ export class TableComponent implements OnInit {
   @Output() removeUser: EventEmitter<any> = new EventEmitter();
   page: number = environment.pagenation.page;
   pageSize: number = environment.pagenation.pageSize;
-  collectionSize: number = environment.pagenation.pageSize;
 
   constructor(
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router
   ) { }
 
   /**
@@ -59,6 +59,10 @@ export class TableComponent implements OnInit {
     this.removeUser.emit(index);
   }
 
-  ngOnInit() {}
+  navigateTo(path: string, id?: number): void {
+    this.router.navigate([path, id]);
+  }
+
+  ngOnInit() { }
 
 }

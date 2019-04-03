@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -33,7 +34,8 @@ import { DataPipeService } from 'src/app/services/data-pipe.service';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [
     QueryService,

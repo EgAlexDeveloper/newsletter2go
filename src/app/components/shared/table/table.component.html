@@ -21,7 +21,7 @@
                 <td>{{user.dateOfBirth | date}}</td>
                 <td>
                     <button type="button" class="btn btn-primary" (click)="openUserModal(user)">Show</button>
-                    <button type="button" class="btn btn-warning">Edit</button>
+                    <button type="button" class="btn btn-warning" (click)="navigateTo('/user', user.id)">Edit</button>
                     <button type="button" class="btn btn-danger" (click)="deleteUserRow(i, user.id)">Delete</button>
                 </td>
             </tr>

@@ -1,0 +1,18 @@
+table {
+    text-align: center;
+    tr {
+        th {
+            vertical-align: middle;
+        }
+        td {
+            vertical-align: middle;
+            button {
+                margin: 0 5px;
+            }
+        }
+    }
+}
+
+ngb-pagination {
+    margin: 0 auto;
+}

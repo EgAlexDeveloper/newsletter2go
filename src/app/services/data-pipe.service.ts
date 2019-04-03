@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { Users } from '../models/Users.model';
+import { User } from '../models/User.model';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataPipeService {
-  private users: BehaviorSubject<Users[]> = new BehaviorSubject([]);
+  private users: BehaviorSubject<User[]> = new BehaviorSubject([]);
 
   constructor() { }
 
-  setUsers(data: Users[]): void {
+  setUsers(data: User[]): void {
     this.users.next(data);
   }
   
-  getUsers(): Observable<Users[]> {
+  getUsers(): Observable<User[]> {
     return this.users.asObservable();
   }
 }

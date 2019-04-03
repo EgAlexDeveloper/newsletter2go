@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { QueryService } from './query.service';
 import { Observable } from 'rxjs/internal/Observable';
 
-import { Users } from '../models/Users.model';
+import { User } from '../models/User.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class UsersEndpointsService {
    * @param 
    * @return Observable {array of Users}
    */
-  fetch(): Observable<Users[]> {
+  fetch(): Observable<User[]> {
     this.query.setUri(`users.json`);
     return this.query.get();
   }

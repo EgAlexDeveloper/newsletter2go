@@ -34,13 +34,11 @@ export class UsersComponent implements OnInit {
    * @name deleteUserRow
    * @memberof UsersComponent
    * @description delete user row
-   * @param {index} index of user in the users array in case integrate with live api we will use id not index
    * @param {id} in case integration with live api
    * @return {void}
    */
-  removeUser(index: number, id?: number): void {
-    this.users.splice(index, 1);
-    this.updateUsersInMemory(this.users);
+  removeUser(users: User[]): void {
+    this.updateUsersInMemory(users);
   }
 
   /**

@@ -1,3 +1,5 @@
 <div class="container">
-    <app-table *ngIf="users && users.length > 0" [data]="users" (removeUser)="removeUser($event)"></app-table>
+    <ng-container *ngIf="users && users.length > 0">
+        <app-table [data]="users" (removeUser)="removeUser($event)"></app-table>
+    </ng-container>
 </div>

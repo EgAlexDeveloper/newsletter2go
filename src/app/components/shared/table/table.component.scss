@@ -1,14 +1,37 @@
 table {
     text-align: center;
+
     tr {
+        -webkit-transition: all 300ms;
+        -moz-transition: all 300ms;
+        -o-transition: all 300ms;
+        -ms-transition: all 300ms;
+
         th {
             vertical-align: middle;
         }
+
         td {
             vertical-align: middle;
+
             button {
-                margin: 0 5px;
+                margin: 0 5px 5px 0;
+                width: 100%;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                transition: all 300ms;
+                -webkit-transition: all 300ms;
+                -moz-transition: all 300ms;
+                -o-transition: all 300ms;
+                -ms-transition: all 300ms;
             }
+        }
+
+        &.selected {
+            background-color: rgba(0, 0, 0, .075);
         }
     }
 }
@@ -20,7 +43,7 @@ ngb-pagination {
 
 /* Customize the label (the container) */
 
-.container {
+.container-input {
     display: block;
     position: relative;
     cursor: pointer;
@@ -29,32 +52,37 @@ ngb-pagination {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
     input {
         position: absolute;
         opacity: 0;
         cursor: pointer;
         height: 0;
         width: 0;
+
         &:checked~.checkmark {
             background-color: #2196F3;
         }
+
         &:checked~.checkmark:after {
             display: block;
         }
     }
+
     &:hover {
         input~.checkmark {
             background-color: #ccc;
         }
     }
+
     .checkmark {
         &:after {
-            left: 10px;
-            top: 8px;
+            left: 5px;
+            top: 2px;
             width: 5px;
             height: 10px;
             border: solid white;
-            border-width: 0 3px 3px 0;
+            border-width: 0 2px 2px 0;
             -webkit-transform: rotate(45deg);
             -ms-transform: rotate(45deg);
             transform: rotate(45deg);
@@ -68,12 +96,31 @@ ngb-pagination {
     left: 0;
     right: 0;
     margin: auto;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
+    height: 15px;
+    width: 15px;
+    background-color: #000;
+    transition: all 300ms;
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    -o-transition: all 300ms;
+    -ms-transition: all 300ms;
+
     &:after {
         content: "";
         position: absolute;
         display: none;
+    }
+}
+
+.table-global-actions {
+    text-align: right;
+    padding: 10px 0;
+
+    button {
+        margin: 0 5px;
+
+        &:last-child {
+            margin: 0;
+        }
     }
 }

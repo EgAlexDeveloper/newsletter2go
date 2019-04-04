@@ -51,11 +51,14 @@ export class UserComponent implements OnInit {
   }
 
   getCurrentUser(uid: number): void {
-    console.log(this.users);
-    // this.currentUser = this.users.filter(user => user.id == uid);
+    this.users.filter(user => {
+      if (user.id == uid) {
+        this.currentUser = user;
+      }
+    });
 
-    for (let key in this.currentUser[0]) {
-      if (this.userForm.get(key)) this.userForm.get(key).setValue(this.currentUser[0][key]);
+    for (let key in this.currentUser) {
+      if (this.userForm.get(key)) this.userForm.get(key).setValue(this.currentUser[key]);
     }
 
   }

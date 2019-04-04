@@ -19,6 +19,7 @@ export class UsersEndpointsService {
    * @return Observable {array of Users}
    */
   fetch(): Observable<User[]> {
+    // this.query.setUri(`5ca5c862330000d1362ea8fc`);
     this.query.setUri(`users.json`);
     return this.query.get();
   }

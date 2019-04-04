@@ -16,24 +16,13 @@ export class TableComponent implements OnInit {
   @Output() removeUser: EventEmitter<any> = new EventEmitter();
   page: number = environment.pagenation.page;
   pageSize: number = environment.pagenation.pageSize;
+  row = {};
+  selectedUsers: User[] = [];
 
   constructor(
     private modalService: NgbModal,
     private router: Router
   ) { }
-
-  /**
-   * @name handlePagenation
-   * @memberof TableComponent
-   * @description handle pagenation anf table rendering
-   * @param null
-   * @returns {User[]} an array of 10 users
-   */
-  handlePagenation(): User[] {
-    return this.data
-      .map((user, i) => ({ id: i + 1, ...user }))
-      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-  }
 
   /**
    * @name openUserModal
@@ -46,21 +35,46 @@ export class TableComponent implements OnInit {
     modalRef.componentInstance.user = user;
   }
 
-  /**
-   * @name deleteUserRow
-   * @memberof TableComponent
-   * @description delete user row
-   * @param {index} index of user in the users array in case integrate with live api we will use id not index
-   * @param {id} in case integration with live api
-   * @return {void}
-   */
-  deleteUserRow(index: number, id?: number): void {
-    // update data pipe with new removed user
-    this.removeUser.emit(index);
+  selectUser(event, user: User): void {
+    if (!event.target.checked) {
+      this.selectedUsers.filter((item, index) => {
+        if (user.id == item.id) {
+          this.selectedUsers.splice(index, 1);
+        }
+      })
+    } else {
+      this.selectedUsers.push(user);
+    }
   }
 
-  selectUser(event, user: User): void {
-    console.log(event)
+  /**
+   * @name deleteSelectedUsers
+   * @memberof TableComponent
+   * @description delete selected users
+   * @param {selectd: User} selectd user
+   * @return {void}
+   */
+  deleteSelectedUsers(selectd?: User): void {
+    let filteredUsers: User[] = Object.assign([], this.data);
+
+    if (selectd) this.selectedUsers.push(selectd);
+
+    for (let i = 0; i < this.selectedUsers.length; i++) {
+      for (let x = 0; x < this.data.length; x++) {
+        if (this.data[x].id == this.selectedUsers[i].id) {
+          filteredUsers[x] = null;
+        }
+      }
+    }
+
+    filteredUsers = filteredUsers.filter(function (el) {
+      return el != null;
+    });
+
+    this.data = filteredUsers;
+    this.selectedUsers = [];
+
+    this.removeUser.emit(filteredUsers);
   }
 
   navigateTo(path: string, id?: number): void {

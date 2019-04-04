@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  // apiUrl: 'http://www.mocky.io/v2/',
   apiUrl: './assets/mocking/',
   pagenation: {
     page: 1,

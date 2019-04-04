@@ -57,7 +57,7 @@ export class TableComponent implements OnInit {
   deleteSelectedUsers(selectd?: User): void {
     let filteredUsers: User[] = Object.assign([], this.data);
 
-    if (selectd) this.selectedUsers.push(selectd);
+    if (selectd) this.selectedUsers = [selectd];
 
     for (let i = 0; i < this.selectedUsers.length; i++) {
       for (let x = 0; x < this.data.length; x++) {

@@ -14,9 +14,9 @@ import { TableComponent } from './components/shared/table/table.component';
 import { ModalComponent } from './components/shared/modal/modal.component';
 
 // Providers
-import { QueryService } from 'src/app/services/query.service';
-import { UsersEndpointsService } from 'src/app/services/users-endpoints.service';
-import { DataPipeService } from 'src/app/services/data-pipe.service';
+import { QueryService } from './services/query.service';
+import { UsersEndpointsService } from './services/users-endpoints.service';
+import { DataPipeService } from './services/data-pipe.service';
 
 @NgModule({
   declarations: [

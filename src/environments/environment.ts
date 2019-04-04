@@ -5,8 +5,10 @@
 export const environment = {
   production: false,
   apiUrl: './assets/mocking/',
-  page: 1,
-  pageSize: 10
+  pagenation: {
+    page: 1,
+    pageSize: 10
+  }
 };
 
 /*

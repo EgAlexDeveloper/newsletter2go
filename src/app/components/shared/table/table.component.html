@@ -1,7 +1,8 @@
 <div class="table-global-actions">
     <button class="btn btn-danger" [disabled]="selectedUsers.length === 0"
         (click)="deleteSelectedUsers()">Delete</button>
-    <button class="btn btn-primary" [disabled]="selectedUsers.length === 0">Download</button>
+    <button class="btn btn-primary" [disabled]="selectedUsers.length === 0"
+        (click)="exportSelectedUsersToCsv()">Download</button>
     <span>({{selectedUsers.length}}) users</span>
 </div>
 
@@ -20,7 +21,8 @@
     </thead>
     <tbody>
         <ng-container *ngFor="let user of data; let i = index;">
-            <tr *ngIf="i < page * pageSize && i >= (page * pageSize) - pageSize && user !== null" [ngClass]="row[user.id] === true ? 'selected': ''">
+            <tr *ngIf="i < page * pageSize && i >= (page * pageSize) - pageSize && user !== null"
+                [ngClass]="row[user.id] === true ? 'selected': ''">
                 <th scope="row">{{user.id}}</th>
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>

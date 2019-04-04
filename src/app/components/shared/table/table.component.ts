@@ -77,6 +77,39 @@ export class TableComponent implements OnInit {
     this.removeUser.emit(filteredUsers);
   }
 
+  /**
+   * @name exportSelectedUsersToCsv
+   * @memberof TableComponent
+   * @description convert selected users to string sepatare with , like csv file formate and 
+   *              create a tag with firing click event to download the file
+   * @returns {void}
+   */
+  exportSelectedUsersToCsv(): void {
+    let data = typeof this.selectedUsers != 'object' ? JSON.parse(this.selectedUsers) : this.selectedUsers;
+    let csv = '';
+
+    for (let i = 0; i < data.length; i++) {
+      let line = '';
+      for (let index in data[i]) {
+        if (line != '') line += ','
+
+        line += data[i][index];
+      }
+
+      csv += line + '\r\n';
+    }
+
+    let blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    let link = document.createElement("a");
+    let url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    link.setAttribute("download", 'users.csv');
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   navigateTo(path: string, id?: number): void {
     this.router.navigate([path, id]);
   }

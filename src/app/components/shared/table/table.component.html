@@ -8,6 +8,7 @@
             <th scope="col">Country</th>
             <th scope="col">Date of birth</th>
             <th scope="col">Actions</th>
+            <th scope="col">select</th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +24,12 @@
                     <button type="button" class="btn btn-primary" (click)="openUserModal(user)">Show</button>
                     <button type="button" class="btn btn-warning" (click)="navigateTo('/user', user.id)">Edit</button>
                     <button type="button" class="btn btn-danger" (click)="deleteUserRow(i, user.id)">Delete</button>
+                </td>
+                <td>
+                    <label class="container">
+                        <input type="checkbox" name="theCheckbox" [(ngModel)]="theCheckbox" (change)="selectUser($event, user)">
+                        <span class="checkmark"></span>
+                    </label>
                 </td>
             </tr>
         </ng-container>

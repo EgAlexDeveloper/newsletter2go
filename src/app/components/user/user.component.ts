@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
   });
 
   private uid: number;
-  private users: User[];
+  private users: User[] = [];
   private currentUser: User;
 
   constructor(
@@ -51,7 +51,8 @@ export class UserComponent implements OnInit {
   }
 
   getCurrentUser(uid: number): void {
-    this.currentUser = this.users.filter(user => user.id == uid);
+    console.log(this.users);
+    // this.currentUser = this.users.filter(user => user.id == uid);
 
     for (let key in this.currentUser[0]) {
       if (this.userForm.get(key)) this.userForm.get(key).setValue(this.currentUser[0][key]);
@@ -70,7 +71,7 @@ export class UserComponent implements OnInit {
       });
 
       this.dataPipe.setUsers(this.users);
-      this.navigateTo('/')
+      this.navigateTo('/');
     }
   }
 

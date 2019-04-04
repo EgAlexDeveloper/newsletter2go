@@ -59,6 +59,10 @@ export class TableComponent implements OnInit {
     this.removeUser.emit(index);
   }
 
+  selectUser(event, user: User): void {
+    console.log(event)
+  }
+
   navigateTo(path: string, id?: number): void {
     this.router.navigate([path, id]);
   }
